@@ -79,6 +79,7 @@ silly examples of things you can do with git hooks
 - tweet all of your commits
 - send an email to your code reviewer every time you do a push
 
+NOTE: talk about git filters if the above doesn't take enough time
 
 
 
