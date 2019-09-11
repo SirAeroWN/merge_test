@@ -4,7 +4,7 @@
 
 commit_msg=$1
 
-words=$(aspell --mode=sgml list $commit_msg)
+words=$(grep -v "^#" $commit_msg | aspell list)
 
 echo $words
 
