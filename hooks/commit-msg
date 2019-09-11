@@ -8,6 +8,8 @@ words=$(aspell --mode=sgml list $commit_msg)
 
 echo $words
 
+echo $@
+
 if [ ! "$words" ]; then
   exit 0
 fi
