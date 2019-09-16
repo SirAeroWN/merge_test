@@ -4,11 +4,23 @@
 
 commit_msg=$1
 
-words=$(grep -v "^#" $commit_msg | aspell list)
+filter() {
+  echo $(python3 - << EOF
 
-echo $words
+bld_str = []
+with open("$1", 'r') as f:
+  for l in f:
+    if l.strip() == '# ------------------------ >8 ------------------------':
+      break
+    elif l[0] != '#' and l.strip() != '':
+      bld_str.append(l.strip())
+print(' '.join(bld_str))
 
-echo $@
+EOF
+  )
+}
+
+words=$(filter $commit_msg | aspell list)
 
 if [ ! "$words" ]; then
   exit 0
@@ -16,7 +28,9 @@ fi
 
 printf "%s\n" "Following words flagged:
 ----------------------------------------"
-echo $words
+for w in $words; do
+  echo $w
+done
 
 # find out if they want to abort
 printf "abort commit to fix errors? [Y/N] "
