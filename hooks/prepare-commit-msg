@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+# insert the git branch name into the commit
+sed -i "1i$(git rev-parse --abbrev-ref HEAD) " "$COMMIT_MSG_FILE"
+
+# insert what number commit this is
+sed -i "1i# This is commit number $( git rev-list --count $SHA1 )" $COMMIT_MSG_FILE
+
+# insert linting results
+for f in $( git diff-index --name-only --cached HEAD | grep '.*js$' ); do
+  echo $( ./node_modules/eslint/bin/eslint.js $f ) >> $COMMIT_MSG_FILE
+done
+
