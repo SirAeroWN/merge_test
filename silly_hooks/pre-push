@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+curl --request POST \
+   -H "Content-Type: application/json" \
+   --data "{\"value1\":\"I did a push! I AM working\", \"value2\":\"$( git log -1 --pretty=%B )\"}" \
+   https://maker.ifttt.com/trigger/push_email/with/key/$( cat ifttt.key )
+
+exit 0
