@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $RANDOM -le 32800 ]; then
-  echo ""
+  echo ""
 fi
 
 exit 0
