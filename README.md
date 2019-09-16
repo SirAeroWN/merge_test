@@ -1,5 +1,3 @@
 # merge_test
 
-Changes in the master branch
-
-changes in a defferent branch
+``make all`` will install all of the normal git hooks.
