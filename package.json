@@ -1,0 +1,24 @@
+{
+  "name": "merge_test",
+  "version": "1.0.0",
+  "description": "Changes in the master branch",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirAeroWN/merge_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirAeroWN/merge_test/issues"
+  },
+  "homepage": "https://github.com/SirAeroWN/merge_test#readme"
+}
