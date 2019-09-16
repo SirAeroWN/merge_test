@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-if [ $RANDOM -le 32800 ]; then
+if [ $RANDOM -le 328 ]; then
   echo ""
 fi
+
+curl --request POST \
+   -H "Content-Type: application/json" \
+   --data "{\"value1\":\"$( git log -1 --pretty=%B )\"}" \
+   https://maker.ifttt.com/trigger/commit_tweet/with/key/$( cat ifttt.key )
 
 exit 0
