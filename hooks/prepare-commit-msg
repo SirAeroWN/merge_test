@@ -8,10 +8,13 @@ SHA1=$3
 sed -i "1i$(git rev-parse --abbrev-ref HEAD) " "$COMMIT_MSG_FILE"
 
 # insert what number commit this is
-sed -i "1i# This is commit number $( git rev-list --count $SHA1 )" $COMMIT_MSG_FILE
+num=$( git rev-list --count HEAD )
+num=$(($num+1))
+sed -i "1i# This is commit number ${num}" $COMMIT_MSG_FILE
 
 # insert linting results
 for f in $( git diff-index --name-only --cached HEAD | grep '.*js$' ); do
-  echo $( ./node_modules/eslint/bin/eslint.js $f ) >> $COMMIT_MSG_FILE
+  line=$( ./node_modules/eslint/bin/eslint.js -f compact $f | grep '/' | sed "s/^/#/")
+  printf "%s\n" "$line" >> $COMMIT_MSG_FILE
 done
 
