@@ -40,6 +40,8 @@ while true; do
   shopt -s nocasematch
   case "$response" in
     y|yes)
+      echo "\nHere was your commit message:\n\n"
+      echo $(filter $commit_msg)
       exit 1
       ;;
     n|no)

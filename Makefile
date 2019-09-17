@@ -1,8 +1,12 @@
 MKHKS=mkdir -p .git/hooks
+H=hooks
+SH=silly_hooks
+DEFAULT_HOOK=post-checkout
+DEFAULT=$(H)/$(DEFAULT_HOOK)
 
-default: silly_hooks/post-commit
+default: $(DEFAULT)
 	$(MKHKS)
-	cp ./silly_hooks/post-commit .git/hooks/
+	cp ./$(DEFAULT) .git/hooks/
 
 all: hooks/*
 	$(MKHKS)
